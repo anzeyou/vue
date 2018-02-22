@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p v-if="hide">if表达式为真时显示</p>
+			<p v-else>if表达式为假时显示</p>
+			
+			
+			<!--下面的代码会报错，因为v-if和v-else两个语句被分开了-->
+			<!--<p v-if="hide">if表达式为真时显示</p>
+			<p>hello</p>
+			<p v-else>if表达式为假时显示</p>-->
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					show:true,
+					hide:false
+				}
+			})
+			
+			
+			
+			//总结：
+			//v-else必须跟在v-if或者是v-else-if后面，否则将会报错
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+	<body>
+		<div id="box">
+			<span v-if="show">要显示的内容：{{msg}}</span><br />
+			<span v-if='hide'>不要显示的内容：{{msg}}</span>
+			
+			<span v-show="show">要显示的内容：{{msg}}</span><br />
+			<span v-show='hide'>不要显示的内容：{{msg}}</span>
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					msg:"hello",
+					show:true,
+					hide:false
+				}
+			});
+			
+			
+			
+			
+			//v-if和v-show都是条件渲染语句区别在于：
+			
+			//1.v-if是通过其表达式布尔值判断是否显示某元素
+			//2.v-show是通过其表达式的布尔值的真假修改css属性，为真时显示，为假时display为none
+			//3.v-if有更高的切换消耗在需要频繁切换的时候用v-show就可以
+			
+			//v-if和v-show的应用场景
+			//需要来回切换显示和隐藏，就是用v-show，否则一般使用v-if
+			
+			
+		</script>
+	</body>
+</html>

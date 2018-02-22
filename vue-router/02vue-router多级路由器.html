@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+		<style>
+			body {
+				background: #ddd;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="row">
+				<div class="col-xs-8 col-xs-offset-2">
+					<div class="page-header">
+						<h1>it666</h1>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-2">
+					<div class="list-group">
+						<router-link class="list-group-item" to="/h5">html5学院</router-link>
+						<router-link class="list-group-item" to="/java">java学院</router-link>
+						<router-link class="list-group-item" to="/python">python学院</router-link>
+
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="panel">
+						<div class="panel-body">
+							<!--配置路由出口-->
+							<router-view></router-view>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<template id="h5">
+			<div>
+				<h2>html5</h2>
+				<p>掌握面向未来</p>
+				<img src="../img/1.jpg" alt="" />
+				<ul class="nav nav-tabs">
+					<router-link to="/h5/basic">基础班</router-link>
+					<router-link to="/h5/big">大神班</router-link>
+				</ul>
+				<div class="tab-content">
+					<router-view></router-view>
+				</div>
+			</div>
+		</template>
+
+		<!--组件h5的子组件-->
+		<template id="basic">
+			<div>
+				<h3>基础班</h3>
+				<p>快速入门html5</p>
+				<img src="../img/ya.jpg" alt="" />
+			</div>
+		</template>
+
+		<template id="big">
+			<div>
+				<h2>大神班</h2>
+				<p>精通html5</p>
+				<img src="../img/ya.jpg" alt="" />
+			</div>
+		</template>
+
+		<template id="java">
+			<div>
+				<h2>java</h2>
+				<p>java是世界上最好的语言</p>
+				<img src="../img/2.jpg" alt="" />
+			</div>
+		</template>
+
+		<template id="python">
+			<div>
+				<h2>python</h2>
+				<p>现在很火</p>
+				<img src="../img/ya.jpg" alt="" />
+			</div>
+		</template>
+
+		<script type="text/javascript">
+			//1.创建组件
+			const html5 = Vue.extend({
+				template: "#h5"
+			});
+
+			//html5组件下的子组件
+			const basic = Vue.extend({
+				template: "#basic"
+			});
+
+			const big = Vue.extend({
+				template: "#big"
+			});
+
+			const java = Vue.extend({
+				template: "#java"
+			});
+
+			const python = Vue.extend({
+				template: "#python"
+			});
+
+			//2.定义路由
+			const routes = [{
+					path: '/h5',
+					component: html5,
+					children:[
+						{path: '/h5/basic',component: basic},
+						{path: '/h5/big',component: big},
+						//配置根路由，就是默认显示的组件内容
+						{path: '/',redirect: "basic"}
+					]
+				},
+				{
+					path: '/java',
+					component: java
+				},
+				{
+					path: '/python',
+					component: python
+				},
+				//配置根路由，就是默认显示的组件内容
+				{
+					path: '/',
+					redirect: "/h5"
+				}
+			];
+
+			//3.创建路由实例
+			const router = new VueRouter({
+				routes
+			});
+
+			//4.创建vue实例并挂载
+			new Vue({
+				router
+			}).$mount("#box");
+
+			new Vue({
+				el: "#box",
+				data: {
+
+				},
+
+			});
+		</script>
+	</body>
+
+</html>

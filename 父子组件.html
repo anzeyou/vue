@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<parent>
+				<!--不能这样直接把子组件拿过来，因为子组件是在父组件内部注册的，所以直接拿不到
+				<child1></child1>-->
+			</parent>
+		</div>
+		
+		
+		<script type="text/javascript">
+			//1.子组件构造器
+			let Child1=Vue.extend({
+				template:`
+					<div>woshi zizujian 1</div>
+				`
+			});
+			let Child2=Vue.extend({
+				template:`
+					<div>woshi zizujian 2</div>
+				`
+			});
+			
+			//2.父组件构造器
+			Vue.component('parent',{
+				//添加子组件过来
+				components:{
+					'child1':Child1,
+					'child2':Child2,
+					
+				},
+				template:`
+					<div>//子组建必须包含在一个父组件中，这里放到div里面，不放会报错
+						<child1></child1>
+						<child2></child2>
+					</div>
+				`
+			})
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+				
+			});
+			
+			
+			
+			//通过这个例子发现，组件可以嵌套组件，当访问父组件时，子组件也会显示
+		</script>
+	</body>
+</html>

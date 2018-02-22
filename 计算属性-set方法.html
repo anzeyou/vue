@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<p>{{fullName}}</p>
+			<input type="button" value="setter属性" @click="deal()"/>
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					firstName:"anan",
+					lastName:"yy"
+				},
+				methods:{
+					//按钮点击调用fullName的setter方法
+					deal(){
+						return this.fullName="Lee Mei";
+					}
+				},
+				computed:{
+					//get方法
+//					fullName(){
+//						return this.firstName+" "+this.lastName;
+//					}
+					fullName:{
+						get(){
+							return this.firstName+" "+this.lastName;
+						},
+						set(str){//这里的str参数指得是deal方法内最终需要设置的值
+							let nameArr=str.split(" ");
+							this.firstName=nameArr[0];
+							this.lastName=nameArr[1];
+						}
+					}
+					
+				}
+			});
+		</script>
+	</body>
+</html>

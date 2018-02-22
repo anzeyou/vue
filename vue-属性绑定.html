@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="text" v-bind:value="val"/>
+			<!--下面是简写方式-->
+			<input type="text" :value="val" />
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					val:"nihao"
+				}
+			})
+		</script>
+	</body>
+</html>

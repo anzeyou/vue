@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			
+			
+		</div>
+		
+		
+		<script type="text/javascript">
+			Vue.component("todo",{
+				template:"<li>我是模板</li>",
+				props:[]
+			})
+			
+			
+			new Vue({
+				el:"#box",
+				mounted:function(){
+					console.log("已经被渲染了");
+				},
+				created:function(){
+					console.log("实例创建完成以后");
+				},
+				data:{
+					arr:["youxi","xuexi","maicai"]
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

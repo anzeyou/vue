@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<n-slot>
+				<!--下面两个标签没有的时候，显示默认的slot标签的文本，下面的标签存在之后，就会替换slot标签的文本-->
+				<input type="text" slot="p" value='替换了name为p的slot'/>
+				<span slot="div">替换了name为div的slot</span>
+			</n-slot>
+			
+		</div>
+		
+		<template id="nslot">
+			<div>
+				<p>我是一个段落</p>
+				<!--后面不知道放什么内容，但是内容可以是随意的，就使用匿名的slot-->
+				<slot name="p">被替换之前的name为p的slot</slot>
+				<slot name="div">被替换之前的name为div的slot</slot>
+			</div>
+		</template>
+		
+		<script type="text/javascript">
+			Vue.component('n-slot',{
+				template:"#nslot"
+			});
+			
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+				
+			});
+		</script>
+	</body>
+</html>

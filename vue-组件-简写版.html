@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--创建组件实例-->
+		<div id="box">
+			<ul>
+				<todo v-bind:content="item" v-for="item in arr"></todo>
+			</ul>
+			
+		</div>
+		
+		<script type="text/javascript">
+			//方式1：
+			//组件的定义：先注册组件，再创建根实例，下面的方法只能渲染相同的文本内容
+			
+//			window.onload=function(){
+//				//注册组件
+//				Vue.component("todo",{
+//					template:"<li>这是一个模板</li>"
+//				})
+//				new Vue({
+//					el:"#box",
+//					data:{}
+//					
+//				})
+//			}
+			
+			
+			//方式2：
+			window.onload=function(){
+				//注册组件
+				
+				//因为组件中的作用域是孤立的，所以子组件在使用父组件时需使用props:[]将值传递出去
+				Vue.component("todo",{
+					template:
+					`<li> 
+						{{content}} 
+						<a href="###">这是一个模板</a>
+					</li>`,
+					props:['content']//prop是一个数组
+				})
+				new Vue({
+					el:"#box",
+					data:{
+						arr:[11,22,33,44]
+					}
+					
+				})
+			}
+		</script>
+	</body>
+</html>

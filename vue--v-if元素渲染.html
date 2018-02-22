@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.fade-enter-active, .fade-leave-active{
+				transition: all 0.5s ease;
+			}
+			.fade-enter, .fade-leave-active{
+				opacity: 0;
+				/*。。。。。其余的样式可自行添加*/
+				
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="box">
+			<!--下面利用了transition组件，添加过渡动画，需配合css样式-->
+			<transition name="fade">
+				<p v-if="show">hello world</p>
+			</transition>
+			<input type="button" value="切换" v-on:click="switchFn()"/>
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					show:true
+				},
+				methods:{
+					switchFn:function(){
+						this.show=!this.show;
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

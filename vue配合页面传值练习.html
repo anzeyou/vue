@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+
+	</head>
+
+	<body>
+		<div id="box">
+			<input type="text" v-model="name"/>
+			<input type="text" v-model="age"/>
+			<input type="button" @click="add()" value="点击添加"/>
+			<table border="1px solid red">
+				<tr v-for='(item,index) in myData'>
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+					<td><input type="button" value="点击删除" @click="deleteP(index)"/></td>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					myData:[],
+					name:"",
+					age:""
+				},
+				methods:{
+					add:function(){
+						if((this.name=="")||(this.age=="")){
+							alert("信息不完整");
+						}
+						else{
+							this.myData.push({name:this.name,age:this.age});
+							this.name="";
+							this.age="";
+						}
+					},
+					deleteP:function(index){
+						this.myData.splice(index,1);
+					}
+				}
+			});
+			
+		</script>
+
+	</body>
+
+</html>

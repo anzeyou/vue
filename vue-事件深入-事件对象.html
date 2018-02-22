@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="button"  value="按钮" @click="fn($event)" />
+		</div>
+		<script type="text/javascript">
+			//vue中的事件对象是 $event--不能改变
+			
+			new Vue({
+				el:"#box",
+				data:{},
+				methods:{
+					fn:function(e){
+						alert(e.clientX+","+e.clientY);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

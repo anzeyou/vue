@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="box">
+			<!--原生方式将时间对象作为参数进行传递-->
+			<input type="text"  value="" @keydown="fn($event)" />
+			<!--vue封装的方式-->
+			<input type="text"  value="" @keydown.13="fn1()" />
+			<!--vue封装方式还支持一种写法-->
+			<input type="text"  value="" @keydown.enter="fn2()" />
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{},
+				methods:{
+					fn:function(ev){
+						if(ev.keyCode==13){
+							alert("回车键被按了")
+						}
+					},
+					
+					fn1:function(){
+						alert("回车键被按了");
+					},
+					
+					fn2:function(){
+						alert("又是回车键被按了");
+					}
+				}
+			})
+			
+			
+			//类似事件还有 keyup
+			//对应的键值根据需要改变
+			//常用的键盘事件：上，下，左，右，回车，删除
+		</script>
+	</body>
+</html>

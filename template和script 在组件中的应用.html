@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<my-data></my-data>
+			<Mydata></Mydata>
+			
+		</div>
+			<!--通过id和vue实例绑定-->
+			<template id="tem">
+				<!--如果组件的元素是多个，将他们包装在一个父级元素中，否则报错-->
+				<div>
+					<p>qqqqqq</p>
+					<input type="text" value="template标签注册组件"/>
+				</div>
+			</template>
+			
+			<!--利用type属性设置这里的script是模板，否则失败-->
+			<script id="stem" type="text/template">
+				<!--如果组件的元素是多个，将他们包装在一个父级元素中，否则报错-->
+				<div>
+					<p>qqqqqq</p>
+					<input type="text" value="template标签注册组件"/>
+				</div>
+			</script>
+		
+		
+		<script type="text/javascript">
+			//template标签注册的组件
+			Vue.component("my-data",{
+				template:"#tem"
+			})
+			
+			
+			//script标签注册的组件
+			Vue.component("Mydata",{
+				template:"#stem"
+			})
+			
+			new Vue({
+				el:'#box',
+				data:{
+							
+				}
+			});
+			
+			
+			
+			//总结：
+			//1.利用template标签或者是script标签进行组件的注册时，需要将两个标签写在实例化的vue对象所包含的范围之外
+			//2.当一个组件内含有多个元素时，要将他们包含在一个父元素中，这样不会报错
+			//3.组件的名称除首字母可以大写，其它的不能用大写，否则报错
+			//4.script标签需要指定类型属性为text/template，此标签才会被解析成模板
+		</script>
+	</body>
+</html>

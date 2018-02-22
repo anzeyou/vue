@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<!--下面实现了数据的双向绑定-->
+			<!--v-model一般用于表单元素（一般input）中，其中的数据具有双向绑定的属性-->
+			<input type="text" v-model="msg"/>
+			<input type="text" v-model="msg"/>
+		</div>
+		
+		<!--下面的input拿不到msg数据，因为它不是box的内容-->
+		<!--<input type="text" v-model="msg" />-->
+		
+		<script type="text/javascript">
+			window.onload=function(){
+				new Vue({
+					el:"#box",//数据在box中，出了这个区域，外部访问不到data数据即msg
+					data:{
+						msg:"welcome vue"
+					}
+				});
+			}
+		</script>
+	</body>
+</html>

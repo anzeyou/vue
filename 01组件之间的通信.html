@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<mycom1 name="anan"></mycom1>
+			
+		</div>
+		
+		
+		
+		
+		<!--子组件-->
+		<template id="mytem2">
+			<div>
+				<p>我是子组件</p>
+				<input type="text" value="子组件" />
+			</div>
+		</template>
+		
+		
+		<script type="text/javascript">
+			Vue.component('mycom1',{
+				//将引入的子组件放到模板中
+				template:`
+					<div>
+						<p>{{name}}</p>
+						<p>我是组件1的内容</p>
+						<child1></child1>
+					</div>
+				`,
+				props:["name"],
+				//子组件包含在下面components中（子组件可能是多个，所以有s）
+				//添加方式1：将组件内容直接写到子组件的template中
+				components:{
+					'child1':{
+						template:`
+							<div>
+								<p>我是组件2</p>
+								<input type="text" value="子组件" />
+							</div>
+						`
+					}
+				}
+				
+				
+				//方式2：利用template标签
+				//子组件也可以利用template标签添加
+//				components:{
+//					'child1':{
+//						template:"#mytem2"
+//					}
+//				}
+			});
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+				
+			});
+		</script>
+	</body>
+</html>

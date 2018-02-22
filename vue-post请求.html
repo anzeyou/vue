@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue-resource.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<input type="button" @click="get()" value="点我"/>
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{},
+				methods:{
+					get:function(){
+						this.$http.post("post.php",{
+							"a":1,
+							"b":2
+						},{
+							emulateJSON:true//这句话是必须的
+						}).then(function(res){
+							console.log(res);//查看返回对象的信息
+							alert(res.data);
+						},function(res){//请求失败调用的方法
+//							alert(res.data);
+						});
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

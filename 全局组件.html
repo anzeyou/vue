@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<!--和vue中的组件名称保持一致-->
+			<my-data></my-data>
+		</div>
+		
+		
+		<script type="text/javascript">
+			//1步.创建组件构造器
+			let Profile=Vue.extend({
+				//1.1模板选项
+				template:`
+					<div>
+						<input type="date"/>
+						<p>今天天气很好</p>
+					</div>
+				`
+			});
+			//2.注册全局组件
+			Vue.component('my-data',Profile)//需传递 组件名称（任意）和构造器 两个参数
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+			});
+		</script>
+	</body>
+</html>

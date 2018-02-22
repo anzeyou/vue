@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+		</style>
+		
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+		<div id="box">
+			<!--对比记忆-->
+			<!--样式绑定的是json对象-->
+			<p :style="{color:'blue'}">hello world</p>
+			
+			
+			<!--方式一：[]法-->
+			<p :style="[a]">hello world</p>
+			<!--传递数组-->
+			<p :style="[a,b]">hello world</p>
+			
+			<!--方式二：{}法-->
+			<p :style="c">hello world</p>
+			
+			
+			
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					a:{
+						color:"red"
+					},//传递的是json对象
+					b:{
+						backgroundColor:"black"//必须使用驼峰标记法
+					},//传递的是json对象
+					c:{
+						color:"yellow"
+					}
+				}
+				
+			})
+		</script>
+	</body>
+</html>

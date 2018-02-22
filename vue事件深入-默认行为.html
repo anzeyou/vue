@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<!--阻止默认事件的一种方式-->
+		<!--<div id="box">
+			<input type="button"  value="按钮" @contextmenu="fn($event)" />
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{},
+				methods:{
+					fn:function(ev){
+						alert(1);
+						//源生方式
+						ev.preventDefault();
+					}
+				}
+			})
+		</script>-->
+		
+		
+		
+		<!--阻止默认事件的方式2-->
+		<div id="box">
+			<input type="button"  value="按钮" @contextmenu.prevent="fn()" />
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{},
+				methods:{
+					fn:function(ev){
+						alert(1);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

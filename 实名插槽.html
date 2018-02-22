@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<my-computer>
+				<!--slot="..."决定将该内容放到那个插槽中-->
+				<!--slot是作为某标签属性的，标签可以是任意的-->
+				<div slot="cpu">cpu存放位置</div>
+				<span slot="gpu">gpu存放位置</span>
+				<p slot="memory">内存条存放位置</p>
+				<div slot="hard-drive">硬盘存放位置</div>
+				
+			</my-computer>
+		</div>
+		
+		<template id="my-computer">
+			<div id="main">
+				<!--实名插槽就是给slot指定name属性-->
+				<slot name="cpu">这里是插cpu的</slot>
+				<slot name="gpu">这里是插gpu的</slot>
+				<slot name="memory">这里是插内存条的</slot>
+				<slot name="hard-drive">这里是插硬盘的</slot>
+			</div>
+		</template>
+		
+		
+		
+		
+		<script type="text/javascript">
+			Vue.component('my-computer',{
+				template:"#my-computer"
+			});
+			
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+			});
+		</script>
+	</body>
+</html>

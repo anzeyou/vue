@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+				<li v-for="value,index in arr">
+					{{value}}  {{index}}
+				</li>
+				<li v-for="key,value in json">{{key}} {{value}}</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#div1",
+				data:{
+					arr:[1,2,3,4],
+					json:{
+						'a':'a1',
+						'b':'b1',
+						'c':'c1',
+					}
+				}
+			});
+			
+			
+			
+			
+			//v-for遍历的数据类型可以是：array，object，number
+			//v-for的优先级高于其余的v-if等指令。
+		</script>
+	</body>
+</html>

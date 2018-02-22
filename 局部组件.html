@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<!--3.使用-->
+			<mydata></mydata>
+			
+		</div>
+	
+		
+		<script type="text/javascript">
+			//1.组件构造器：
+			let Profile=Vue.extend({
+				template:`
+					<div>
+						<h1>hello</h1>
+					</div>
+				`
+			})
+			
+			new Vue({
+				el:"#box",
+				//2.局部注册
+				components:{
+					mydata:Profile
+				}
+			});
+		</script>
+	</body>
+</html>

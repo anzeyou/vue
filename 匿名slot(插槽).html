@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<my-slot>
+				<!--没有下面的p元素，会默认显示slot标签中的文字-->
+				<p>当组件中有内容了，插槽的默认内容会被覆盖</p>
+				<span>hello</span>
+			</my-slot>
+		</div>
+		
+		<template id="myslot">
+			<div id="panel">
+				<h2 class="panel-header">插槽头部</h2>
+				<!--方的内容不确定，所以预留插槽，它可以代表任何元素-->
+				<slot>可以替换任何标签，默认显示提示内容（当前的这个句子）</slot>
+				<footer>插槽尾部</footer>
+			</div>
+			
+		</template>
+		
+		<script type="text/javascript">
+			Vue.component('my-slot',{
+				template:"#myslot"
+			})
+			
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			原始的msg:{{msg}}
+			<!--下面的调用不要加括号-->
+			翻转的msg:{{reverse}}
+		</div>
+		
+		
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					msg:"hello"
+				},
+				methods:{
+					
+				},
+				
+				//数据改变才会调用下面的方法
+				computed:{
+					//当调用下面的方法对象改变时，才会调用下面的方法
+					//本例中调用该方法的是msg，所以当msg改变时，才会调用这个方法，如果msg
+					//不变，就不会调用这个方法
+					reverse(){
+						return this.msg.split("").reverse().join("");
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

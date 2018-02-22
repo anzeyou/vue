@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<n-slot>
+				<!--下面标签没有的时候，显示默认的slot标签的文本，下面的标签存在之后，就会替换slot标签的文本-->
+				<p>知道放的内容之后，此条句子显示，默认的slot中的语句将被替换</p>
+			</n-slot>
+			
+		</div>
+		
+		<template id="nslot">
+			<div>
+				<p>我是一个段落</p>
+				<!--后面不知道放什么内容，但是内容可以是随意的，就使用匿名的slot-->
+				<slot>在有内容之前，显示默认的此条语句，即我是被替换之前的内容</slot>
+			</div>
+		</template>
+		
+		<script type="text/javascript">
+			Vue.component('n-slot',{
+				template:"#nslot"
+			});
+			
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					
+				}
+				
+			});
+		</script>
+	</body>
+</html>

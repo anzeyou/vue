@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="box">
+			<!--监听allcounter事件--和事件绑定差不多的道理-->
+			<my-btn @total="allcounter()"></my-btn>
+			<my-btn @total="allcounter()"></my-btn>
+			<my-btn @total="allcounter()"></my-btn>
+			<my-btn @total="allcounter()"></my-btn>
+			<my-btn @total="allcounter()"></my-btn>
+			<my-btn @total="allcounter()"></my-btn>
+			
+			
+			<p>所有按钮总共点击了{{totalcounter}}次</p>
+		</div>
+		
+		
+		<template id="my_btn">
+			<button @click="total()">点击了{{counter}}次</button>
+		</template>
+		
+		
+		<script type="text/javascript">
+			Vue.component("my-btn",{
+				template:"#my_btn",
+				data(){
+					return {
+						counter:0
+					}
+				},
+				methods:{
+					total(){
+						this.counter+=1;
+						//通知外界调用了这个方法--触发total事件，counter的值变化
+						this.$emit('total');
+					}
+				}
+			});
+			
+			
+			new Vue({
+				el:"#box",
+				data:{
+					totalcounter:0
+				},
+				methods:{
+					allcounter(){
+						this.totalcounter+=1
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

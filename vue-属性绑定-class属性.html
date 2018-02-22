@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.red{
+				color:red;
+			}
+			.changecolor{
+				background: #C9302C;
+			}
+		</style>
+		
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+	</head>
+	<body>
+		<div id="box">
+			<!--第一种用法：[]中的内容是data中的-->
+			<!--[]对应的是data中的数据，找到data对应的数据后，再将对应的class名称在style中找到-->
+			<p :class="[tored]">hello world</p>
+			<p :class="[tored,bgcolor]">nihao shijie</p>
+			
+			
+			<!--第二种用法：传递json对象，这里的red和changecolor是样式表中的名称-->
+			<!--样式显示，true不能忘记，false是让样式不显示-->
+			<p :class="{red:true}">hello world</p>
+			<p :class="{red:true,changecolor:true}">nihao shijie</p>
+			
+			<!--第三种写法：和数据联合使用-->
+			<p :class="{red:a}">hello world</p>
+			<p :class="{red:a,changecolor:a}">nihao shijie</p>
+			
+			<!--第四种写法：既然传的是json，就从data中传-->
+			<p :class="json">hello world</p>
+			
+			
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:"#box",
+				data:{
+					tored:"red",//red代表的是class名称，要和上面style中的名字保持一直
+					bgcolor:"changecolor",
+					a:true,
+					b:false,
+					json:{
+						red:true,//不能使用this.a,访问不到，下面同理
+						changecolor:false
+					}
+				}
+				
+			})
+			
+			//归根结底属性绑定的方式有两种一种是[]法，一种是{}法
+			
+			
+		</script>
+	</body>
+</html>
